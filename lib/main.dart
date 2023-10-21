@@ -19,43 +19,31 @@ class MyApp extends StatelessWidget {
 }
 
 class Scroll extends StatelessWidget {
-  const Scroll({super.key});
-
+  List colors = [100, 200, 300,400,500,600,700]; //  ليسته
+  List mytext = ["box1", "box2", "box3","box4","box5","box6","box7"];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.blue,
-        ),
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SizedBox(
-              child: Container(
-                color: Colors.black,
-                height: 500,
-                child: ListView.builder(
-                 itemCount: 4,
-                itemBuilder: (BuildContext context, int index) {
-                 return Container(
-                   alignment: Alignment.center,
-                   
-                    child: Text("Container",),
-                    color: Colors.amber,
-                    height: 200,
-
-
-
-
-                  );
-                 }
-                )
-           
-                  
-                ),
-              ),
-           
-          ],
-        ));
+      appBar: AppBar(
+        backgroundColor: Colors.blue,
+      ),
+      body: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+        Container(
+          padding: EdgeInsets.all(15),
+          color: Colors.black,
+          height: 500,
+          child: ListView.builder(
+              itemCount: colors.length, //  تكرار علي حسب عدد الليست
+              itemBuilder: (BuildContext context, int index) {
+                return Container(
+                  alignment: Alignment.center,
+                  child: Text("${mytext[index]}"),   //  استدعاء كلمة من ليست 
+                  height: 200,
+                  color: Colors.amber[  colors[index]  ],   //  تغير درجة اللون من ليست
+                );
+              }),
+        )
+      ]),
+    );
   }
 }
